@@ -2,6 +2,7 @@ package fr.epsi.b32324c2.jdbc;
 
 import java.sql.Connection;
 import java.sql.DriverManager;
+import java.sql.ResultSet;
 import java.sql.Statement;
 import java.util.ResourceBundle;
 
@@ -20,7 +21,11 @@ public class TestSelect {
     public static void main(String[] args) {
         try (Connection cnx = DriverManager.getConnection(DB_URL, DB_USER, DB_PW)) {
             try (Statement statement = cnx.createStatement()) {
-                statement.executeQuery("DELETE FROM 'fournisseur' WHERE 'nom'='La Maison de la Peinture'");
+                ResultSet cursor = statement.executeQuery("SELECT * FROM FOURNISSEUR");
+                while (cursor.next()) {
+                    //Affiche la valeur de la colonne NOM
+                    System.out.println(cursor.getString("NOM"));
+                }
             }
             catch (Exception e) {
                 System.out.println(e.getMessage());

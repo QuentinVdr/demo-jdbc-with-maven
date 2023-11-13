@@ -20,7 +20,7 @@ public class TestUpdate {
     public static void main(String[] args) {
         try (Connection cnx = DriverManager.getConnection(DB_URL, DB_USER, DB_PW)) {
             try (Statement statement = cnx.createStatement()) {
-                statement.executeUpdate("UPDATE fournisseur SET nom ='La Maison des Peintures' WHERE nom='La Maison de la Peinture'");
+                statement.executeUpdate("UPDATE FOURNISSEUR SET nom ='La Maison des Peintures' WHERE nom='La Maison de la Peinture'");
             }
             catch (Exception e) {
                 System.out.println(e.getMessage());

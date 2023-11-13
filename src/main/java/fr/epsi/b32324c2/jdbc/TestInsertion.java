@@ -20,7 +20,7 @@ public class TestInsertion {
     public static void main(String[] args) {
         try (Connection cnx = DriverManager.getConnection(DB_URL, DB_USER, DB_PW)) {
             try (Statement statement = cnx.createStatement()) {
-                statement.executeQuery("INSERT INTO fournisseur (NOM) VALUES ('La Maison de la Peinture')");
+                statement.executeQuery("INSERT INTO FOURNISSEUR (NOM) VALUES ('La Maison de la Peinture')");
             }
             catch (Exception e) {
                 System.out.println(e.getMessage());

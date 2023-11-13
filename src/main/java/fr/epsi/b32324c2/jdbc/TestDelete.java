@@ -20,7 +20,7 @@ public class TestDelete {
     public static void main(String[] args) {
         try (Connection cnx = DriverManager.getConnection(DB_URL, DB_USER, DB_PW)) {
             try (Statement statement = cnx.createStatement()) {
-                statement.executeQuery("DELETE FROM fournisseur WHERE nom='La Maison des Peintures'");
+                statement.executeQuery("DELETE FROM FOURNISSEUR WHERE nom='La Maison des Peintures'");
             }
             catch (Exception e) {
                 System.out.println(e.getMessage());
