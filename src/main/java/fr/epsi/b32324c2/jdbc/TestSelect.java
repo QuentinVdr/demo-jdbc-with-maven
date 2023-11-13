@@ -1,9 +1,13 @@
 package fr.epsi.b32324c2.jdbc;
 
+import fr.epsi.b32324c2.jdbc.entites.Fournisseur;
+
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.ResultSet;
 import java.sql.Statement;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.ResourceBundle;
 
 public class TestSelect {
@@ -22,10 +26,14 @@ public class TestSelect {
         try (Connection cnx = DriverManager.getConnection(DB_URL, DB_USER, DB_PW)) {
             try (Statement statement = cnx.createStatement()) {
                 ResultSet cursor = statement.executeQuery("SELECT * FROM FOURNISSEUR");
+
+                List<Fournisseur> fournisseurs = new ArrayList<>();
                 while (cursor.next()) {
-                    //Affiche la valeur de la colonne NOM
-                    System.out.println(cursor.getString("NOM"));
+                    int id = cursor.getInt("ID");
+                    String nom = cursor.getString("NOM");
+                    fournisseurs.add(new Fournisseur(id, nom));
                 }
+                fournisseurs.forEach(System.out::println);
             }
             catch (Exception e) {
                 System.out.println(e.getMessage());
