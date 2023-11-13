@@ -9,6 +9,13 @@ public class Fournisseur {
 
     public Fournisseur() {
     }
+    public Fournisseur(int id) {
+        this.id = id;
+    }
+
+    public Fournisseur(String nom) {
+        this.nom = nom;
+    }
 
     public Fournisseur(int id, String nom) {
         this.id = id;
